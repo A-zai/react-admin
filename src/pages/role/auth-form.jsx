@@ -21,10 +21,18 @@ export default class AuthForm extends Component {
   handleCheck=()=>{
 
     }
-  render() {
-    const {role}=this.props
 
+  getTreeNodes=(menuList)=>{
+    return menuList.map(item=>{
+
+    })
+  }
+  componentWillMount(){
+    this.props.setForm(this.props.form)
+  }
+  render() {
     
+    const {role}=this.props
     const formItemLayout={
       labelCol:{span:5},
       wrapperCol:{span:16}
@@ -41,7 +49,9 @@ export default class AuthForm extends Component {
           onClick={this.handleCheck} //点击复选框触发
         >
           <TreeNode title='平台权限' key='all'>
-
+           {
+             this.getTreeNodes(menuList)
+           } 
           </TreeNode>
         </Tree>
       </>
