@@ -5,7 +5,8 @@ const menuList =[
   {
     key:'/home',
     title:'首页',
-    Icon: 'home'
+    Icon: 'home',
+    isPublic: true,//是否是公开的
   },
   {
     key: '/cp',
