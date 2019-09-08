@@ -121,13 +121,15 @@ export const reqDeleteImg = (name) => ajax({
   }
 })
 
-/* 获取所有角色的列表 */
-export const reqRoles=()=>ajax({url:'/manage/role/list'})
-
-//添加角色
-export const reqAddRole = (roleName) => ajax.post( '/manage/role/add',{roleName})
-//更新角色
+// 获取所有角色的列表
+export const reqRoles = () => ajax('/manage/role/list')
+// 添加角色
+export const reqAddRole = (roleName) => ajax.post('/manage/role/add', {
+  roleName
+})
+// 添加角色
 export const reqUpdateRole = (role) => ajax.post('/manage/role/update', role)
+
 
 // 获取所有用户的列表
 export const reqUsers = () => ajax('/manage/user/list')

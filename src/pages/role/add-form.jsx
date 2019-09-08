@@ -29,7 +29,7 @@ class AddForm extends Component {
       <Form>
         <Form.Item label='角色名称' {...formItemLayout}>
           {
-            getFieldDecorator({
+            getFieldDecorator('roleName',{
               initialValue:'',
               rules:[
                 {required:true, message:'必须输入角色名称'}
