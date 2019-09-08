@@ -9,7 +9,7 @@ import Product from '../product/product'
 import Home from '../home/home'
 import Category from "../category/category"
 import Role from "../role1/role"
-import User from "../user1/user"
+import User from "../user/user"
 import Bar from '../charts/bar'
 import Line from "../charts/line"
 import Pie from "../charts/pie" 

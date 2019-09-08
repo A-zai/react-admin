@@ -19,12 +19,26 @@ export default class AuthForm extends Component {
     checkedKeys:[]
   }
 
+  constructor(props){
+    super(props)
+    let checkedKeys=[]
+    const role =this.props.role
+    if (role) {
+      checkedKeys=role.memus
+    }
+    this.state={
+      checkedKeys
+    }
+  }
+
   handleCheck = (checkedKeys) => {
     // 更新checkedKeys状态数据
     this.setState({
       checkedKeys
     })
   }
+
+  getMenus=()=>this.state.checkedKeys
 
   /* 根据菜单的数组生成<TreeNode></TreeNode>*/
   getTreeNodes=(menuList)=>{
@@ -35,6 +49,13 @@ export default class AuthForm extends Component {
     }) 
   }
 
+  //将要接受到新的属性的回调
+  componentWillReceiveProps(nextProps){
+     const menus = nextProps.role.menus;
+     this.setState({
+       checkedKeys:menus
+     })
+  }
 
   render() {
     console.log('AuthForm render()')
@@ -48,19 +69,19 @@ export default class AuthForm extends Component {
 
     return (
       <>
-        <Item label='角色名称' {...formItemLayout}>
+         <Item label='角色名称' {...formItemLayout}>
           <Input value={role.name} disabled/>
         </Item>
         <Tree
           checkable //是否支持被选中
           defaultExpandAll //默认展开所有的树节点
           checkedKeys={checkedKeys} //选中复选框的树节点受控组件
-          onClick={this.handleCheck} //点击复选框触发
+          onCheck={this.handleCheck}
         >
-          <TreeNode title='平台权限' key='all'>
-           {
-             this.getTreeNodes(menuList)
-           } 
+          <TreeNode title="平台权限" key="all">
+            {
+              this.getTreeNodes(menuList)
+            }
           </TreeNode>
         </Tree>
       </>
